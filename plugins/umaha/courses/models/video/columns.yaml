@@ -1,0 +1,14 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    title:
+        label: umaha.courses::lang.plugin.models.video.fields.title
+    youtube_video_id:
+        label: umaha.courses::lang.plugin.models.video.fields.video_id
+    order:
+        label: umaha.courses::lang.plugin.models.video.fields.order
+    is_published:
+        label: umaha.courses::lang.plugin.models.video.fields.published
+

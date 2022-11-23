@@ -1,0 +1,22 @@
+uuid: c542760a-37d0-43fb-ad55-b21ed0ae6f51
+handle: Skills
+type: single
+name: Skills
+drafts: true
+
+fields:
+    
+    skills:
+        label: Skills
+        type: repeater
+        span: auto
+        form:
+            fields:
+                name:
+                    label: Name
+                    type: text
+                    span: auto
+                proficiency:
+                    label: Proficiency
+                    type: number
+                    span: auto

@@ -1,0 +1,22 @@
+
+<div id="question-{{ question.id }}">
+
+    <p>{{ question.question }}</p>
+
+    {% for answer in question.answers %}
+
+       {{ alphabet[loop.index0] }}.
+
+        {% if answer['option'] == chosen_option %}
+
+        <a class="text-dark" data-request="onSelectOption" data-request-data="{questionId: {{ question.id }}, option: '{{ answer['option'] }}' }" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
+
+        {% else %}
+
+        <a data-request="onSelectOption" data-request-data="{questionId: {{ question.id }}, option: '{{ answer['option'] }}' }" href="#" id="{{answer['option']}}">{{ answer['option'] }}</a>
+
+        {% endif %}  <br>
+
+    {% endfor %}
+
+</div>

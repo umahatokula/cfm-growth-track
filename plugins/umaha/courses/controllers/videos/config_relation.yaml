@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+playlists:
+    label: To Playlist
+    view:
+        list: $/umaha/courses/models/playlist/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        form: $/umaha/courses/models/playlist/fields.yaml
+        recordsPerPage: 10

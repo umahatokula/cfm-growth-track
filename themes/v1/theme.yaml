@@ -1,0 +1,16 @@
+name: v1
+description: ''
+author: 'Umaha Tokula'
+homepage: ''
+authorCode: ''
+code: ''
+parent: ''
+database: '0'
+
+
+form:
+    fields:
+        logo:
+            label: Logo
+            type: mediafinder
+            mode: image

@@ -1,0 +1,36 @@
+<!-- all plugins here -->
+<script src="{{ 'assets/js/jquery.3.6.min.js' | theme }}"></script>
+<script src="{{ 'assets/youtube-popup/grt-youtube-popup.js' | theme }}"></script>
+<script src="{{ 'assets/js/bootstrap.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/imageloded.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/counterup.js' | theme }}"></script>
+<script src="{{ 'assets/js/waypoint.js' | theme }}"></script>
+<script src="{{ 'assets/js/magnific.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/isotope.pkgd.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/nice-select.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/fontawesome.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/ripple.js' | theme }}"></script>
+<script src="{{ 'assets/js/owl.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/slick-slider.min.js' | theme }}"></script>
+<script src="{{ 'assets/js/wow.min.js' | theme }}"></script>
+<!-- main js  -->
+<script src="{{ 'assets/js/main.js' | theme }}"></script>
+
+
+<script>
+    $(window).on('ajaxErrorMessage', function(event, message){
+
+        // This can be any custom JavaScript you want
+        alert('Something bad happened, mate, here it is: ' + message);
+
+        // This will stop the default alert() message
+        event.preventDefault();
+
+    })
+</script>
+
+{% placeholder page_js %}
+
+{% framework extras %}
+{% scripts %}
+

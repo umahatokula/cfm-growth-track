@@ -1,0 +1,211 @@
+url = "/course/:slug"
+layout = "default"
+title = "Course"
+
+[courseDetails]
+slug = "{{ :slug }}"
+
+[session]
+security = "user"
+redirect = "login"
+==
+<!-- courses-details Area Start-->
+{% if course.unlocked %}
+<section class="courses-details-area pd-top-135 pd-bottom-130">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3>{{ course.name }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="single-course-wrap mb-0">
+                    <div class="thumb">
+                        <div id="thumbnail"></div>
+                    </div>
+                </div>
+                <ul class="course-tab nav nav-pills pd-top-100">
+                    <li class="nav-item">
+                        <button class="nav-link active" id="pill-1" data-bs-toggle="pill" data-bs-target="#pills-01" type="button" role="tab" aria-controls="pills-01" aria-selected="true">Overview</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" id="pill-2" data-bs-toggle="pill" data-bs-target="#pills-02" type="button" role="tab" aria-controls="pills-02" aria-selected="false">Documents</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" id="pill-3" data-bs-toggle="pill" data-bs-target="#pills-03" type="button" role="tab" aria-controls="pills-03" aria-selected="false">Quiz</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-01" role="tabpanel" aria-labelledby="pill-1">
+                        <div class="overview-area">
+                            <div class="bg-white">
+
+                                <p>{{ course.description|raw }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-02" role="tabpanel" aria-labelledby="pill-2">...</div>
+                    <div class="tab-pane fade" id="pills-03" role="tabpanel" aria-labelledby="pill-3">...</div>
+                </div>
+            </div>
+            <div class="col-lg-4 sidebar-area">
+                <div class="widget widget-accordion-inner">
+                    <h5 class="widget-title border-0">Course Syllabus</h5>
+                    {% if course.playlists %}
+                        <div class="accordion" id="accordionExample">
+                            {% for playlist in course.playlists %}
+
+                                {% if playlist %}
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Content
+                                            </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <ul class="video-list">
+                                                {% for video in playlist.videos %}
+                                                    <li>
+                                                        <a class="gt-play-btn" data-thumbnail="{{ video.thumbnail }}" data-ytid="{{ video.youtube_video_id }}" href="#"><i class="fa fa-play"></i></a>
+                                                        <span>
+                                                            <p>
+                                                                <a href="#"
+                                                                    class="youtube-link video"
+                                                                    youtubeid="{{ video.youtube_video_id  }}"
+                                                                    data-thumbnail="{{ video.thumbnail }}"
+                                                                    data-videoid="{{ video.youtube_video_id  }}"
+                                                                    data-videosource="{{ video.source  }}"
+                                                                >
+                                                                    {{ video.title }}
+                                                                </a>
+                                                            </p>
+                                                            <span>{{ video.duration }}</span>
+                                                        </span>
+                                                    </li>
+                                                {% endfor %}
+                                                </ul>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="p-4">No playlist</p>
+                    {% endif %}
+                </div>
+                <div class="widget widget-course-details mb-5">
+                    <h5 class="widget-title">Course Details</h5>
+                    <ul>
+                        <li>Level: <span>Beginner</span></li>
+                        <li>Total Hour: <span>07h 30m</span></li>
+                        <li>Total Lessons: <span>15</span></li>
+                        <li>Last Update: <span>August 23, 2021</span></li>
+                    </ul>
+                </div>
+                {% if course.open_quiz %}
+                <div class="widget widget-course-details mb-0">
+                    <div class="d-grid gap-2">
+                        <a href="{{ 'quiz' | page({'slug':course.slug}) }}" class="btn btn-primary btn-lg btn-block">Take Quiz</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<section class="courses-details-area pd-top-135 pd-bottom-130">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3>NOTICE!!!</h3>
+                <p >You have not unlocked the <b>{{ course.name }}</b> module.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+{% put page_js %}
+
+<script>
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    const videoHandle = $('ul.video-list li:first > span > p > a')
+    let videoid = videoHandle.data("videoid");
+    let videosource = videoHandle.data("videosource");
+
+    if(videosource == 'vimeo') {
+        fetchVimeoVideo(videoid)
+    }
+});
+
+
+$(".video").on('click', function() {
+
+    const videosource = $(this).data("videosource")
+
+    if(videosource == 'vimeo') {
+
+        let videoid = $(this).data("videoid");
+        fetchVimeoVideo(videoid);
+
+    } else {
+        fetchYoutubeVideo();
+    }
+
+
+
+})
+
+async function fetchVimeoVideo(videoId) {
+
+    let response = await fetch(`https://vimeo.com/api/oembed.json?url=${videoId},autoplay=true`);
+    let json = await response.json()
+
+    console.log(json.html);
+    document.getElementById('thumbnail').innerHTML  = json.html
+
+}
+
+
+
+
+
+async function fetchYoutubeVideo() {
+
+    $(".youtube-link").grtyoutube();
+
+    $(".youtube-link").on('click', function() {
+        var thumbnailUrl = $(this).data("thumbnail")
+
+        document.getElementById('thumbnail').src = thumbnailUrl
+    })
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+{% endput %}

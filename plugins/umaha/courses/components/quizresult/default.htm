@@ -1,0 +1,52 @@
+
+<h3>Result - {{ course.name }}</h3>
+
+<ol>
+
+    {% for question in course.questions %}
+
+    <li>
+
+        <div class="row mb-5">
+            <div class="col-12">
+              <div id="question-{{ question.id }}">
+
+                <p>{{ question.question }}</p>
+
+                {% for answer in question.answers %}
+
+                   {{ alphabet[loop.index0] }}.
+
+                    {% if (responses[question.id]['chosen_option'] == answer['option']) %}
+
+                      {% if (responses[question.id]['is_correct'] == responses[question.id]['chosen_option']) %}
+
+                        <a class="text-success" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
+
+                      {% else %}
+
+                        <a class="text-danger" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
+
+                      {% endif %}
+
+
+                    {% else %}
+
+                      <a class="text-default" href="#" id="{{answer['option']}}">{{ answer['option'] }}</a>
+
+                    {% endif %}
+
+                    <br>
+
+                {% endfor %}
+
+              </div>
+            </div>
+        </div>
+
+    </li>
+
+
+    {% endfor %}
+
+</ol>

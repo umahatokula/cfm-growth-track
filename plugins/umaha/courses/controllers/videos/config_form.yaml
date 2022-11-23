@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Video
+
+# Model Form Field configuration
+form: $/umaha/courses/models/video/fields.yaml
+
+# Model Class name
+modelClass: Umaha\Courses\Models\Video
+
+# Default redirect location
+defaultRedirect: umaha/courses/videos
+
+# Create page
+create:
+    title: Create Video
+    redirect: umaha/courses/videos/update/:id
+    redirectClose: umaha/courses/videos
+
+# Update page
+update:
+    title: Edit Video
+    redirect: umaha/courses/videos
+    redirectClose: umaha/courses/videos
+
+# Preview page
+preview:
+    title: Preview Video

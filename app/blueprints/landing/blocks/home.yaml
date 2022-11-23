@@ -1,0 +1,23 @@
+uuid: 21aad99b-d3c6-4f5e-b271-15471c81e11b
+name: Homepage
+type: mixin
+handle: Blocks\Home
+
+fields:
+
+    image:
+        label: Image
+        type: mediafinder
+        mode: image
+        maxItems: 1
+        span: auto
+        
+    heading1:
+        label: Top Text
+        type: text
+        span: auto
+        
+    heading2:
+        label: Bottom Text
+        type: text
+        span: auto

@@ -1,0 +1,39 @@
+uuid: 7b193500-ac0b-481f-a79c-2a362646364d
+handle: BlockBuilder
+type: mixin
+name: Block Builder
+
+fields:
+    blocks:
+        label: Blocks
+        type: repeater
+        displayMode: builder
+        span: adaptive
+        tab: Blocks
+        groups:
+            home:
+                name: Homepage
+                description: Home page
+                icon: octo-icon-picture
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\Home
+
+            about:
+                name: About
+                description: About page
+                icon: octo-icon-text-h1
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\About
+
+            testimonies:
+                name: Testimonies
+                description: Portfolio page
+                icon: octo-icon-diamond
+                fields:
+                    _mixin:
+                        type: mixin
+                        source: Blocks\Testimonies

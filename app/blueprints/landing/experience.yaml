@@ -1,0 +1,36 @@
+uuid: 295a8b2a-a446-443b-bf40-184151906d15
+handle: Experience
+type: entry
+name: Experience
+drafts: true
+
+fields:
+
+    year_from:
+        label: Year From
+        type: datepicker
+        mode: date
+        span: auto
+
+    year_to:
+        label: Year To
+        type: datepicker
+        mode: date
+        span: auto
+
+    job_title:
+        label: Job Title
+        type: text
+        span: auto
+
+    company:
+        label: Company
+        type: text
+        span: auto
+
+    description:
+        label: Description
+        type: textarea
+        span: auto
+
+   

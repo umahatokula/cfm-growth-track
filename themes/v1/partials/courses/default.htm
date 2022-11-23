@@ -1,0 +1,25 @@
+{% for course in courses %}
+
+    <div class="col-lg-3">
+        <div class="single-dashboard-inner">
+            <img src=" {{ course.icon | media }}" alt="img">
+            <div class="media-body">
+
+                {% if course.unlocked %}
+                    <a href="{{ 'course' | page({'slug': course.slug}) }}" class="text-white">
+                        {{ course.name  }}
+                        {% if course.unlocked != true %}
+                            <img src="{{ 'assets/img/lock-icon.png' | theme }}" class="img-fluid" style="width: 20px; height: 20px" />
+                        {% endif %}
+                    </a>
+                {% else %}
+                <a href="#" class="text-white">
+                    {{ course.name  }}
+                    <img src="{{ 'assets/img/lock-icon.png' | theme }}" class="img-fluid" style="width: 20px; height: 20px" />
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

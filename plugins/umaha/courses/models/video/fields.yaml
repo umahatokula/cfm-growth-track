@@ -1,0 +1,39 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: umaha.courses::lang.plugin.models.video.fields.title
+        span: auto
+    slug:
+        label: Slug
+        preset: title
+        span: auto
+    source:
+        label: umaha.courses::lang.plugin.models.video.fields.source
+        type: dropdown
+        span: auto
+    youtube_video_id:
+        label: umaha.courses::lang.plugin.models.video.fields.youtube_video_id
+        span: auto
+    order:
+        label: umaha.courses::lang.plugin.models.video.fields.order
+        type: number
+        span: auto
+        default: 50
+    description:
+        label: umaha.courses::lang.plugin.models.video.fields.description
+        type: richeditor
+        toolbarButtons: fullscreen|bold|italic|underline|strikeThrough|subscript|superscript|fontFamily|fontSize|||color|emoticons|inlineStyle|paragraphStyle
+        size: huge
+        span: auto
+    categories:
+        label: umaha.courses::lang.plugin.models.video.fields.categories
+        type: relation
+        span: auto
+    is_published:
+        label: umaha.courses::lang.plugin.models.video.fields.published
+        type: switch
+        default: true
+

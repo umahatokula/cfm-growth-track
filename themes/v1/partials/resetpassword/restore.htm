@@ -1,0 +1,17 @@
+<h4>Restore your password</h4>
+
+<p class="lead">
+    <strong>Lost your password?</strong> No problem! Enter your email address to verify your account.
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onRestorePassword"
+    data-request-update="'{{ __SELF__ }}::reset': '#partialUserResetForm'">
+    <div class="single-input-wrap">
+        <input name="email" type="email" class="" id="userRestoreEmail" placeholder="Enter your email">
+    </div>
+
+    <div class="btn-wrap">
+        <button type="submit" class="btn btn-base w-100">Restore password</button>
+    </div>
+</form>

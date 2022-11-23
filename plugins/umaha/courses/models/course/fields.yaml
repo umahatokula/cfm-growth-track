@@ -1,0 +1,93 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        span: auto
+    slug:
+        label: Slug
+        preset: name
+        span: auto
+    slogan:
+        label: Slogan
+        span: auto
+    icon:
+        label: Icon
+        span: auto
+        type: mediafinder
+    prerequisite:
+        label: Pre-requisite Module
+        commentAbove: "The module that needs to be completed to unlock this module"
+        type: dropdown
+        span: auto
+    pass_mark:
+        label: Pass Mark
+        commentAbove: "Percentage score to pass this module (Ex. 60)"
+        span: auto
+    code:
+        label: SKU (Code)
+        span: auto
+    currency:
+        label: 'pixel.shop::lang.fields.currency'
+        type: dropdown
+        cssClass: oc-icon-usd
+        span: auto
+        tab: 'pixel.shop::lang.fields.details'
+    price:
+        label: Price
+        span: auto
+    old_price:
+        label: Old Price
+        span: auto
+    description:
+        label: umaha.courses::lang.plugin.models.course.fields.description
+        type: textarea
+        span: full
+    is_published:
+        label:
+        type: switch
+        comment: Publish or not
+        on: umaha.courses::lang.plugin.models.course.fields.on
+        off: umaha.courses::lang.plugin.models.course.fields.off
+        default: 1
+        span: auto
+    course_image:
+        label: Course Image
+        type: fileupload
+        mode: image
+        imageHeight: 276
+        imageWidth: 393
+        thumbOptions:
+            mode: crop
+            offset:
+                - 0
+                - 0
+            quality: 90
+            sharpen: 0
+            interlace: false
+            extension: auto
+        span: auto
+    open_quiz:
+        label: Open Quiz
+        type: switch
+        default: true
+        span: auto
+tabs:
+    fields:
+        playlists:
+            label: Playlist
+            type: relation
+            tab: Video Playlists
+            nameFrom: name
+        audios:
+            label: Audio
+            type: relation
+            tab: Audio
+            nameFrom: title
+        documents:
+            label: Documents
+            type: relation
+            tab: Documents
+            nameFrom: title

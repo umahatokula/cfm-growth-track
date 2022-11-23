@@ -1,0 +1,12 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    playlist_url:
+        label: YouTube Playlist URL
+        span: auto
+    slug:
+        label: Slug
+        preset: playlist_url
+        span: auto

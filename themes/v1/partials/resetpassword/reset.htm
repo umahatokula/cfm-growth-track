@@ -1,0 +1,21 @@
+<h4>Reset your password</h4>
+
+<p class="lead">
+    Please check your email for the activation code.
+</p>
+
+<form
+    data-request="{{ __SELF__ }}::onResetPassword"
+    data-request-update="'{{ __SELF__ }}::complete': '#partialUserResetForm'">
+    <div class="single-input-wrap">
+        <input name="code" type="text" class="" id="resetCode" placeholder="Enter the activation code" value="{{ __SELF__.code }}">
+    </div>
+
+    <div class="single-input-wrap">
+        <input name="password" type="password" class="" id="resetPassword" placeholder="Enter a new password">
+    </div>
+
+    <div class="btn-wrap">
+        <button type="submit" class="btn btn-base w-100">Reset password</button>
+    </div>
+</form>

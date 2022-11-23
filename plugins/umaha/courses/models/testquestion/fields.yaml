@@ -1,0 +1,31 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    course:
+        label: Course
+        type: relation
+        nameFrom: name
+        span: full
+        required: true
+    question:
+        label: Question
+        type: textarea
+        span: auto
+        required: true
+    answers:
+        type: repeater
+        span: auto
+        required: true
+        form:
+            fields:
+                option:
+                    label: Option
+                    type: text
+                    span: auto
+                is_correct:
+                    label: Is correct
+                    type: switch
+                    span: auto
+

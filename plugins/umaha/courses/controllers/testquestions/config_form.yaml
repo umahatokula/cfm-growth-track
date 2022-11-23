@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Test Question
+
+# Model Form Field configuration
+form: $/umaha/courses/models/testquestion/fields.yaml
+
+# Model Class name
+modelClass: Umaha\Courses\Models\TestQuestion
+
+# Default redirect location
+defaultRedirect: umaha/courses/testquestions
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: umaha/courses/testquestions/update/:id
+    redirectClose: umaha/courses/testquestions
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: umaha/courses/testquestions
+    redirectClose: umaha/courses/testquestions
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

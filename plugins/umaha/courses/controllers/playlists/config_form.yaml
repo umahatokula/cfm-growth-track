@@ -1,0 +1,37 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Playlist
+
+# Model Form Field configuration
+form: $/umaha/courses/models/playlist/fields.yaml
+
+# Model Class name
+modelClass: Umaha\Courses\Models\Playlist
+
+# Default redirect location
+defaultRedirect: umaha/courses/playlists
+
+# Create page
+create:
+    title: Create Playlist
+    redirect: umaha/courses/playlists/update/:id
+    redirectClose: umaha/courses/playlists
+
+# Create page
+youtube:
+    title: Create Playlist from YouTube
+    redirect: umaha/courses/playlists/update/:id
+    redirectClose: umaha/courses/playlists
+
+# Update page
+update:
+    title: Edit Playlist
+    redirect: umaha/courses/playlists
+    redirectClose: umaha/courses/playlists
+
+# Preview page
+preview:
+    title: Preview Playlist

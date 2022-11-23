@@ -1,0 +1,52 @@
+
+
+
+<h3>Quiz - {{ course.name }}</h3>
+
+{% if course.questions|length %}
+<ol>
+
+    {% for question in course.questions %}
+
+    <li style="text-align: left">
+
+        <div class="row mb-5">
+            <div class="col-12">
+              <div id="question-{{ question.id }}">
+
+                <p>{{ question.question }}</p>
+
+                {% for answer in question.answers %}
+
+                   {{ alphabet[loop.index0] }}.
+
+                   {% if (responses[question.id]['chosen_option'] == answer['option']) %}
+                    <a data-request="onSelectOption" data-request-data="{questionId: {{ question.id }}, option: '{{ answer['option'] }}' }" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
+                    {% else %}
+                     <a data-request="onSelectOption" data-request-data="{questionId: {{ question.id }}, option: '{{ answer['option'] }}' }" href="#" id="{{answer['option']}}">{{ answer['option'] }}</a>
+                  {% endif %}
+                      <br>
+
+                {% endfor %}
+
+              </div>
+            </div>
+        </div>
+
+    </li>
+
+
+    {% endfor %}
+
+</ol>
+<button data-request="onSubmit" class="btn btn-block btn-primary">Submit Test</button>
+
+{% else %}
+
+<div class="row">
+    <div class="col-12">
+        <p>There are no quiz questions</p>
+    </div>
+</div>
+
+{% endif %}

@@ -1,0 +1,21 @@
+uuid: 9d1f80aa-b5f8-4402-b9ff-0f7de256a941
+handle: MainMenu
+type: single
+name: MainMenu
+drafts: true
+
+fields:
+    menu_items:
+        label: Menu Items
+        type: repeater
+        span: full
+        form:
+            fields:
+                item:
+                    label: Menu Name
+                    type: text
+                    span: auto
+                value:
+                    label: URL
+                    type: text
+                    span: auto

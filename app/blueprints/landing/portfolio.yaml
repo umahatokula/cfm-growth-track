@@ -1,0 +1,48 @@
+uuid: 2365912e-f439-4301-8f0b-fb7491d58a06
+handle: Portfolio
+type: entry
+name: Portfolio
+drafts: true
+
+fields:
+    image:
+        label: Image
+        type: mediafinder
+        mode: image
+        maxItems: 1
+
+    job_title:
+        label: Job Title
+        type: text
+        span: auto
+
+    project_website:
+        label: Project Website
+        type: text
+        span: auto
+
+    client:
+        label: Client
+        type: text
+        span: auto
+
+    duration:
+        label: Duration
+        type: text
+        span: auto
+
+    technologies:
+        label: Technologies
+        type: repeater
+        span: auto
+        form:
+            fields:
+                name:
+                    label: Name
+                    type: text
+                    span: auto
+
+    budget:
+        label: Budget
+        type: text
+        span: auto

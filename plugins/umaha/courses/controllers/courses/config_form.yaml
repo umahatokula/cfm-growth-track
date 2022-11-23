@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Course
+
+# Model Form Field configuration
+form: $/umaha/courses/models/course/fields.yaml
+
+# Model Class name
+modelClass: Umaha\Courses\Models\Course
+
+# Default redirect location
+defaultRedirect: umaha/courses/courses
+
+# Create page
+create:
+    title: Create Course
+    redirect: umaha/courses/courses/update/:id
+    redirectClose: umaha/courses/courses
+
+# Update page
+update:
+    title: Edit Course
+    redirect: umaha/courses/courses
+    redirectClose: umaha/courses/courses
+
+# Preview page
+preview:
+    title: Preview Course

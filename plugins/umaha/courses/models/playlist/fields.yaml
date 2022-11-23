@@ -1,0 +1,28 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        span: auto
+    slug:
+        label: Slug
+        preset: name
+        span: auto
+    description:
+        label: umaha.courses::lang.plugin.models.playlist.fields.description
+        type: richeditor
+        toolbarButtons: fullscreen|bold|italic|underline|strikeThrough|subscript|superscript|fontFamily|fontSize|||color|emoticons|inlineStyle|paragraphStyle
+        size: small
+        span: auto
+    sub_headings:
+        type: repeater
+        label: Create sub-headings
+        span: auto
+        form:
+            fields:
+                title:
+                    label: Sub-heading
+                    type: text
+

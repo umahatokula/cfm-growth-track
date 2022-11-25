@@ -144,7 +144,7 @@ $( document ).ready(function() {
     let videosource = videoHandle.data("videosource");
 
     if(videosource == 'vimeo') {
-        fetchVimeoVideo(videoid)
+        fetchVimeoVideo(videoid, false)
     }
 });
 
@@ -156,7 +156,7 @@ $(".video").on('click', function() {
     if(videosource == 'vimeo') {
 
         let videoid = $(this).data("videoid");
-        fetchVimeoVideo(videoid);
+        fetchVimeoVideo(videoid, true);
 
     } else {
         fetchYoutubeVideo();
@@ -166,18 +166,15 @@ $(".video").on('click', function() {
 
 })
 
-async function fetchVimeoVideo(videoId) {
+async function fetchVimeoVideo(videoUrl, autoplay) {
 
-    let response = await fetch(`https://vimeo.com/api/oembed.json?url=${videoId},autoplay=true`);
+    let response = await fetch(`https://vimeo.com/api/oembed.json?url=${videoUrl}&width=640&responsive=true&byline=false&title=false&autoplay=${autoplay}`);
     let json = await response.json()
 
     console.log(json.html);
     document.getElementById('thumbnail').innerHTML  = json.html
 
 }
-
-
-
 
 
 async function fetchYoutubeVideo() {
@@ -191,20 +188,6 @@ async function fetchYoutubeVideo() {
     })
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 

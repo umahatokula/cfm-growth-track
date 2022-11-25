@@ -44,7 +44,9 @@ function onStart() {
             <div class="col-lg-3 col-sm-6">
                 <div class="single-intro-wrap">
                     <div class="thumb">
-                        <img src="{{ course.icon | media }}" width="60" alt="img">
+                        <a href="{{ 'course' | page({'slug': course.slug}) }}">
+                            <img src="{{ course.icon | media }}" width="60" alt="img">
+                        </a>
                     </div>
                     <div class="wrap-details">
                         <h6><a href="{{ 'course' | page({'slug': course.slug}) }}">{{ course.name }}</a></h6>

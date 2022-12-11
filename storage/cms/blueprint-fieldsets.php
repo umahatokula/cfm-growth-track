@@ -86,6 +86,28 @@
       ),
     ),
   ),
+  '960ca857-039e-46f5-9d04-d0cc237afe44' => 
+  array (
+    'name' => 'FAQs',
+    'handle' => 'FAQS',
+    'contentUuid' => '960ca857-039e-46f5-9d04-d0cc237afe44',
+    'fields' => 
+    array (
+      'question' => 
+      array (
+        'label' => 'Question',
+        'type' => 'text',
+        'span' => 'full',
+      ),
+      'answer' => 
+      array (
+        'label' => 'Answer',
+        'type' => 'textarea',
+        'size' => 'small',
+        'span' => 'full',
+      ),
+    ),
+  ),
   '9d1f80aa-b5f8-4402-b9ff-0f7de256a941' => 
   array (
     'name' => 'MainMenu',

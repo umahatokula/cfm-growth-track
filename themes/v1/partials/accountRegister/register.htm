@@ -1,7 +1,19 @@
 {% if canRegister %}
-    <h3>Create an account here</h3>
 
-    {{ form_ajax('onRegister', { class: 'single-signin-form-wrap'}) }}
+    <form
+        data-request="onRegister"
+        data-request-validate
+        data-request-flash
+        data-request-success="document.getElementById('form').reset();"
+        class="single-signin-form-wrap"
+        id="form"
+    >
+
+    {% flash %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endflash %}
 
         <div class="single-input-wrap">
             <input
@@ -18,6 +30,10 @@
                 type="email"
                 id="registerEmail"
                 placeholder="Enter your email" />
+
+            <div id="loginTaken" class="alert alert-danger" style="display: none">
+                Password is too weak
+            </div>
         </div>
 
         {% if loginAttribute == "username" %}
@@ -32,18 +48,30 @@
 
         <div class="single-input-wrap">
             <input
+                data-request="onCheckPasswordStrength"
+                data-request-success="$('#weakPassword').toggle(!!data.passwordWeak)"
+                data-track-input
                 name="password"
                 type="password"
                 id="registerPassword"
-                placeholder="Choose a password" />
+                placeholder="Choose a password (minimum 8 charaters)" />
+
+
+            <div id="weakPassword" class="text-danger" style="display: none">
+                <small>Password is too short</small>
+            </div>
+        </div>
+
+        <div class="single-input-wrap">
+            <input
+                name="password_confirmation"
+                type="password"
+                id="userSigninPassword"
+                placeholder="Confirm your password" />
         </div>
 
         <div class="btn-wrap">
-            <button type="submit" class="btn btn--base w-100">Register</button>
-        </div>
-        <div class="bottom-content">
-            <a href="{{ 'reset-password' | page }}">Forgottem Your Password</a>
-            <a class="strong" href="{{ 'login' | page }}">Signin</a>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
         </div>
 
     {{ form_close() }}
@@ -51,3 +79,4 @@
 {% else %}
     <!-- Registration is disabled. -->
 {% endif %}
+

@@ -1,4 +1,21 @@
-{{ form_ajax('onSignin', { class: 'single-signin-form-wrap'}) }}
+    <form
+        data-request="onSignin"
+        data-request-validate
+        data-request-flash
+        data-request-success="document.getElementById('form').reset();"
+        class="form-horizontal ng-pristine ng-valid"
+        id="form"
+    >
+
+    {% flash %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endflash %}
+
+    <div class="alert alert-danger" data-validate-error>
+        <p data-message></p>
+    </div>
 
     <div class="single-input-wrap">
         <input
@@ -28,8 +45,8 @@
         <button type="submit" class="btn btn-base w-100">Sign in</button>
     </div>
     <div class="bottom-content">
-        <a href="#">Forgottem Your Password</a>
-        <a class="strong" href="{{ 'signup' | page }}">Signup</a>
+        Don't remember your password? <a class="text-primary strong" href="/reset-password">We got you!</a> <br>
+        Don't have an account? <a class="strong" href="{{ 'signup' | page }}">Register</a>
     </div>
 
 {{ form_close() }}

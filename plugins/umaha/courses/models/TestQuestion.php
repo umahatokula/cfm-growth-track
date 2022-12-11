@@ -119,11 +119,15 @@ class TestQuestion extends Model
      */
     public static function getPercentageScore($userId, $courseId) : float {
         try {
-            $result = fdiv(self::getNumberOfCorrectlyAnsweredQuestions($userId, $courseId), self::getTotalNumberOfQuestionsInCourse($courseId));
+
+            $correctlyAnswered = self::getNumberOfCorrectlyAnsweredQuestions($userId, $courseId);
+            $totalQuestions = self::getTotalNumberOfQuestionsInCourse($courseId);
+
+            return fdiv($correctlyAnswered, $totalQuestions);
+
         } catch (DivisionByZeroError $e) {
             echo 'Message: ' .$e->getMessage();
         }
-        return $result;
     }
 
 

@@ -1,0 +1,18 @@
+
+<div class="d-none d-md-none d-lg-block d-xl-block d-xxl-block">
+    <!-- dashboard-left-menu start  -->
+<div class="dashboard-left-menu" style="min-width: 300px">
+    <a href="{{ 'home' | page }}" class="logo"><img src="{{ this.theme.logo | media  }}" style="width: 160px" alt="img"></a>
+    <ul>
+        <li class="nav-item">
+            <a class="dashboard-item-menu" href="{{ 'dashboard' | page }}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="dashboard-item-menu" href="{{ 'profile' | page }}"><i class="fa fa-user"></i> My Profile</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" data-request="onLogout" data-request-data="redirect: '/'" class="dashboard-item-menu"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </li>
+    </ul>
+</div>
+</div>

@@ -1,0 +1,41 @@
+uuid: 245be2f7-819f-46ec-b0fa-157075b21f51
+name: Testimonies
+type: mixin
+handle: Testimonies
+
+navigation:
+    parent: Testimonies
+    icon: icon-magic
+    order: 10
+
+fields:
+
+    heading:
+        label: Hwading
+        span: full
+
+    testimonies:
+        label: Members
+        type: repeater
+        itemsExpanded: false
+        form:
+            fields:
+                title:
+                    label: Title
+                    span: full
+
+                name:
+                    label: Name
+                    type: text
+                    size: tiny
+
+                testimony:
+                    label: Testimony
+                    type: textarea
+                    size: tiny
+
+                avatar:
+                    label: Image
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1

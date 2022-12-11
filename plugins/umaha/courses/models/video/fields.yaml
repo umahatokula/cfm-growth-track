@@ -17,7 +17,7 @@ fields:
     youtube_video_id:
         label: umaha.courses::lang.plugin.models.video.fields.youtube_video_id
         span: auto
-    order:
+    track_number:
         label: umaha.courses::lang.plugin.models.video.fields.order
         type: number
         span: auto

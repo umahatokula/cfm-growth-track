@@ -248,4 +248,62 @@
     ),
     'handleSlug' => 'blocks_testimonies',
   ),
+  '245be2f7-819f-46ec-b0fa-157075b21f51' => 
+  array (
+    'uuid' => '245be2f7-819f-46ec-b0fa-157075b21f51',
+    'name' => 'Testimonies',
+    'type' => 'mixin',
+    'handle' => 'Testimonies',
+    'navigation' => 
+    array (
+      'parent' => 'Testimonies',
+      'icon' => 'icon-magic',
+      'order' => 10,
+    ),
+    'fields' => 
+    array (
+      'heading' => 
+      array (
+        'label' => 'Hwading',
+        'span' => 'full',
+      ),
+      'testimonies' => 
+      array (
+        'label' => 'Members',
+        'type' => 'repeater',
+        'itemsExpanded' => false,
+        'form' => 
+        array (
+          'fields' => 
+          array (
+            'title' => 
+            array (
+              'label' => 'Title',
+              'span' => 'full',
+            ),
+            'name' => 
+            array (
+              'label' => 'Name',
+              'type' => 'text',
+              'size' => 'tiny',
+            ),
+            'testimony' => 
+            array (
+              'label' => 'Testimony',
+              'type' => 'textarea',
+              'size' => 'tiny',
+            ),
+            'avatar' => 
+            array (
+              'label' => 'Image',
+              'type' => 'mediafinder',
+              'mode' => 'image',
+              'maxItems' => 1,
+            ),
+          ),
+        ),
+      ),
+    ),
+    'handleSlug' => 'testimonies',
+  ),
 );

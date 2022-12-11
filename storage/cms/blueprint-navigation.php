@@ -15,6 +15,19 @@
       'mode' => 'content',
       'description' => NULL,
     ),
+    '960ca857-039e-46f5-9d04-d0cc237afe44' => 
+    array (
+      'label' => 'FAQs',
+      'icon' => 'icon-magic',
+      'order' => 110,
+      'uuid' => '960ca857-039e-46f5-9d04-d0cc237afe44',
+      'handle' => 'FAQS',
+      'hasPrimary' => true,
+      'code' => 'entry_f_a_q_s',
+      'url' => 'tailor/entries/f_a_q_s',
+      'mode' => 'content',
+      'description' => NULL,
+    ),
     'ae2d2c25-3a0e-4765-8b36-d1666fc0e31f' => 
     array (
       'label' => 'Globals',
@@ -77,6 +90,18 @@
       'label' => 'Post',
       'description' => NULL,
       'permissionCode' => 'tailor.entry.edcd102e05254e4db07e633ae6c18db6',
+    ),
+    '960ca857-039e-46f5-9d04-d0cc237afe44' => 
+    array (
+      'uuid' => '960ca857-039e-46f5-9d04-d0cc237afe44',
+      'handle' => 'FAQS',
+      'hasPrimary' => true,
+      'code' => 'entry_f_a_q_s',
+      'url' => 'tailor/entries/f_a_q_s',
+      'mode' => 'content',
+      'label' => 'FAQs',
+      'description' => NULL,
+      'permissionCode' => 'tailor.entry.960ca857039e46f59d04d0cc237afe44',
     ),
     '9d1f80aa-b5f8-4402-b9ff-0f7de256a941' => 
     array (

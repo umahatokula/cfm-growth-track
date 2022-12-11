@@ -1,0 +1,28 @@
+{% set countryId = countryId|default(form_value('country_id')) %}
+{% set stateId = stateId|default(form_value('state_id')) %}
+
+<div class="row mb-3 single-input-wrap">
+    <label for="accountCountry" class="col-sm-2 col-form-label">Country</label>
+    <div class="col-sm-10">
+        {{ form_select_country('country_id', countryId, {
+            id: 'accountCountry',
+            class: '',
+            emptyOption: '',
+            'data-request': 'onInit',
+            'data-request-update': {
+                'country-state': '#partialCountryState'
+            }
+        }) }}
+    </div>
+</div>
+
+<div class="row mb-3 single-input-wrap">
+    <label for="accountState" class="col-sm-2 col-form-label">State</label>
+    <div class="col-sm-10">
+    {{ form_select_state('state_id', countryId, stateId, {
+        id: 'accountState',
+        class: '',
+        emptyOption: ''
+    }) }}
+    </div>
+</div>

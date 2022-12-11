@@ -1,0 +1,60 @@
+.banner-area {
+    min-height: 700px;
+}
+
+.admin-dashboard-right-side {
+    padding: 50px 70px 30px 350px;
+    background-color: #f9fafd;
+}
+
+nav.dashboard-menu {
+    display: none;
+}
+
+.home-banner-inner {
+    padding-top: 100px;
+}
+
+
+@media all and (max-width: 767px) {
+
+    .admin-dashboard-right-side {
+        padding: 120px 30px 30px 30px;
+        background-color: #f9fafd;
+    }
+
+    nav.dashboard-menu {
+        display: block;
+    }
+
+    .home-banner-area {
+      background-image: url('../img/5-of-them.jpg') !important;
+      background-size: cover;
+      background-position: center;
+      padding: 150px 0 90px;
+      /* opacity: 0.8; */
+      min-height: 0px;
+      height: 500px;
+      position: relative;
+    }
+
+    .home-banner-inner {
+        background-color: black;
+        opacity: 0.8;
+        border-radius: 10px;
+        color: white;
+        position: absolute;
+        bottom: 20px;
+        padding: 20px;
+    }
+
+    .banner-inner h1 {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .banner-content p{
+        color: white;
+        font-size: 2rem;
+    }
+}

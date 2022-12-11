@@ -1,0 +1,39 @@
+url = "/edit-profile"
+layout = "dashboard"
+title = "Edit Profile"
+
+[session]
+security = "user"
+redirect = "login"
+
+[editProfile]
+==
+
+function onStart() {
+
+    $user = Auth::getUser();
+
+    if(!$user) return redirect('/login');
+}
+==
+<section class="admin-dashboard-section">
+    <div class="admin-dashboard-right-side">
+
+        <!-- top header start  -->
+        {% partial 'dashboard/user-header' user=user %}
+        <!-- top header end  -->
+
+        <!-- dashboard-area start  -->
+        <div class="dashboard-profile-area">
+            <div class="col-lg-12">
+                <div class="contact-inner">
+                    {% component 'editProfile' %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% partial 'dashboard/dashboard-left-menu' %}
+
+</section>

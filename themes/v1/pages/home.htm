@@ -8,7 +8,7 @@ handle = "LandingPage"
 use Umaha\Courses\Models\Course;
 
 function onStart() {
-  $this['courses'] = Course::all();
+  $this['courses'] = Course::orderBy('sequence_number')->get();
 }
 ==
 {% set banner = landingPage.blocks[0] %}
@@ -16,18 +16,14 @@ function onStart() {
 {% set testimonials = landingPage.blocks[2] %}
 
 <!-- Banner Area Start-->
-<section class="banner-area" style="background-image: url({{ banner.image | media }});">
+<section class="banner-area home-banner-area" style="background-image: url({{ banner.image | media }});">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-8 align-self-center">
-                <div class="banner-inner text-md-start text-center">
+                <div class="banner-inner home-banner-inner text-md-start text-center">
                     <h1>{{ banner.heading1 }}</h1>
                     <div class="banner-content">
                         <p>{{ banner.heading2 }}</p>
-                    </div>
-                    <div class="single-input-wrap">
-                        <input type="text" placeholder="Search your best courses">
-                        <button><i class="fa fa-search"></i></button>
                     </div>
                 </div>
             </div>
@@ -41,7 +37,7 @@ function onStart() {
     <div class="intro-area">
         <div class="row justify-content-center">
             {% for course in courses %}
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-3 col-6">
                 <div class="single-intro-wrap">
                     <div class="thumb">
                         <a href="{{ 'course' | page({'slug': course.slug}) }}">

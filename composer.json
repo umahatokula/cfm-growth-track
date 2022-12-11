@@ -15,7 +15,9 @@
         "rainlab/user-plugin": "^1.6",
         "responsiv/currency-plugin": "^1.0",
         "symfony/mailgun-mailer": "^6.1",
-        "symfony/http-client": "^6.1"
+        "symfony/http-client": "^6.1",
+        "rainlab/location-plugin": "^1.2",
+        "rainlab/userplus-plugin": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5|^9.0"

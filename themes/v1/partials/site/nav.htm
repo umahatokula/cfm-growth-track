@@ -1,5 +1,5 @@
 <header class="navbar-area">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container nav-container">
             <div class="responsive-mobile-menu">
                 <button class="menu toggle-btn d-block d-lg-none" data-target="#themefie_main_menu"
@@ -9,28 +9,21 @@
                 </button>
             </div>
             <div class="logo">
-                <a class="main-logo" href="{{ 'home' | page }}"><img class="img-fluid" style="width: 60px" src="{{ this.theme.logo | media  }}" alt="img"></a>
+                <a class="main-logo" href="{{ 'home' | page }}">
+                    <img class="img-fluid" style="width: 150px" src="{{ this.theme.logo | media  }}" alt="img">
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="themefie_main_menu">
-                <div class="single-input-wrap">
-                    <input type="text" placeholder="Search your best courses">
-                    <button><i class="fa fa-search"></i></button>
-                </div>
                 <ul class="navbar-nav menu-open text-end">
                     <li class="current-menu-item ">
-                        <a href="#">Home</a>
+                        <a href="{{ 'home' | page }}">Home</a>
                     </li>
                     <li class="">
                         <a href="{{ 'faqs' | page }}">FAQs</a>
                     {% if user %}
-                        <li><a href="{{ 'dashboard' | page }}" class="btn btn-primary">Dashboard</a></li>
+                        <li><a href="{{ 'dashboard' | page }}" class="btn btn-primary text-white">Dashboard</a></li>
                     {% else %}
-                        <li><a href="{{ 'login' | page }}">Log In</a></li>
-                        <li>
-                            <a href="{{ 'signup' | page }}" class="btn btn-base-light">
-                                Sign Up
-                            </a>
-                        </li>
+                        <li><a href="{{ 'login' | page }}" class="btn btn-primary text-white">Log In</a></li>
                     {% endif %}
                 </ul>
             </div>

@@ -128,6 +128,37 @@
     ),
     'handleSlug' => 'blog_post',
   ),
+  '960ca857-039e-46f5-9d04-d0cc237afe44' => 
+  array (
+    'uuid' => '960ca857-039e-46f5-9d04-d0cc237afe44',
+    'handle' => 'FAQS',
+    'type' => 'entry',
+    'name' => 'FAQs',
+    'drafts' => false,
+    'primaryNavigation' => 
+    array (
+      'label' => 'FAQs',
+      'icon' => 'icon-magic',
+      'order' => 110,
+    ),
+    'fields' => 
+    array (
+      'question' => 
+      array (
+        'label' => 'Question',
+        'type' => 'text',
+        'span' => 'full',
+      ),
+      'answer' => 
+      array (
+        'label' => 'Answer',
+        'type' => 'textarea',
+        'size' => 'small',
+        'span' => 'full',
+      ),
+    ),
+    'handleSlug' => 'f_a_q_s',
+  ),
   '9d1f80aa-b5f8-4402-b9ff-0f7de256a941' => 
   array (
     'uuid' => '9d1f80aa-b5f8-4402-b9ff-0f7de256a941',

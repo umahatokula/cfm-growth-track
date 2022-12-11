@@ -49,7 +49,7 @@ class Course extends ComponentBase
         $this->page['coursePage'] = $this->property('coursePage', 'course');
 
         $courses = CourseModel::all();
-        $this->page['courses'] = $courses;
+        $this->page['courses'] = $courses->sortBy('sequence_number');
 
     }
 

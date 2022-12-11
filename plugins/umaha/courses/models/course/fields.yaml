@@ -5,54 +5,50 @@
 fields:
     name:
         label: Name
-        span: auto
+        span: full
     slug:
         label: Slug
         preset: name
-        span: auto
+        span: full
     slogan:
         label: Slogan
-        span: auto
+        span: full
+    sequence_number:
+        label: Sequence number
+        span: full
+        type: number
     icon:
         label: Icon
-        span: auto
+        span: full
         type: mediafinder
     prerequisite:
         label: Pre-requisite Module
         commentAbove: "The module that needs to be completed to unlock this module"
         type: dropdown
-        span: auto
+        span: full
     pass_mark:
         label: Pass Mark
         commentAbove: "Percentage score to pass this module (Ex. 60)"
-        span: auto
+        span: full
     code:
         label: SKU (Code)
-        span: auto
+        span: full
     currency:
-        label: 'pixel.shop::lang.fields.currency'
+        label: 'Currency'
         type: dropdown
         cssClass: oc-icon-usd
-        span: auto
-        tab: 'pixel.shop::lang.fields.details'
+        span: full
+        tab: 'Details'
     price:
         label: Price
-        span: auto
+        span: full
     old_price:
         label: Old Price
-        span: auto
+        span: full
     description:
         label: umaha.courses::lang.plugin.models.course.fields.description
         type: textarea
         span: full
-    is_published:
-        label:
-        type: switch
-        comment: Publish or not
-        on: umaha.courses::lang.plugin.models.course.fields.on
-        off: umaha.courses::lang.plugin.models.course.fields.off
-        default: 1
-        span: auto
     course_image:
         label: Course Image
         type: fileupload
@@ -68,12 +64,22 @@ fields:
             sharpen: 0
             interlace: false
             extension: auto
-        span: auto
+        span: full
+    email_template_code:
+        label: Email Template Code
+        span: full
+    is_published:
+        type: switch
+        label: Publish
+        on: umaha.courses::lang.plugin.models.course.fields.on
+        off: umaha.courses::lang.plugin.models.course.fields.off
+        default: 1
+        span: full
     open_quiz:
         label: Open Quiz
         type: switch
         default: true
-        span: auto
+        span: full
 tabs:
     fields:
         playlists:

@@ -7,6 +7,7 @@ use Event;
 use Auth;
 use Umaha\Courses\Models\UnlockedModule;
 use Umaha\Courses\Models\Course;
+use Rainlab\User\Models\User;
 
 use Mail;
 
@@ -106,6 +107,8 @@ class Plugin extends PluginBase
 
             $dependantCourse = Course::where('prerequisite', $passedCourseId)->first();
 
+            if (!$dependantCourse) return;
+
             UnlockedModule::updateOrCreate(
                 [
                     'user_id' => $user->id,
@@ -116,11 +119,14 @@ class Plugin extends PluginBase
 
         Event::listen('umaha.courses.coursePassed', function ($passedCourseId, $user) {
 
+            $course = Course::find($passedCourseId);
+            if(!$course->email_template_code) return;
+
             // Send mail
             if ($user->email) {
                 $vars = ['user' => $user];
 
-                Mail::queue('umaha.courses.coursePassed', $vars, function($message) use ($user) {
+                Mail::queue($course->email_template_code, $vars, function($message) use ($user) {
 
                     $message->to($user->email, $user->name);
 
@@ -128,6 +134,28 @@ class Plugin extends PluginBase
             }
 
         });
+
+        User::extend(function($model) {
+            $model->hasOne['profile'] = [
+                \Umaha\Courses\Models\Profile::class, 'key' => 'user_id'
+            ];
+        });
+
+        \Event::listen('umaha.courses.userRegistered', function($user) {
+            // dd($user);
+
+            // Send mail
+            if ($user['email']) {
+                $vars = ['user' => $user];
+
+                Mail::queue('umaha.courses.userRegistered', $vars, function($message) use ($user) {
+
+                    $message->to($user['email'], $user['name']);
+
+                });
+            }
+        });
+
 
     }
 
@@ -146,6 +174,7 @@ class Plugin extends PluginBase
             'Umaha\Courses\Components\CourseDetails'  => 'courseDetails',
             'Umaha\Courses\Components\TestQuestions'  => 'testQuestions',
             'Umaha\Courses\Components\QuizResult'     => 'quizResult',
+            'Umaha\Courses\Components\EditProfile'    => 'editProfile',
         ];
     }
 
@@ -225,6 +254,13 @@ class Plugin extends PluginBase
                     'quiz' => [
                         'label'       => 'Quiz',
                         'url'         => Backend::url('umaha/courses/testquestions'),
+                        'icon'        => 'icon-bars',
+                        'permissions' => ['umaha.courses.*'],
+                        'order'       => 500,
+                    ],
+                    'centers' => [
+                        'label'       => 'Centers',
+                        'url'         => Backend::url('umaha/courses/centers'),
                         'icon'        => 'icon-bars',
                         'permissions' => ['umaha.courses.*'],
                         'order'       => 500,

@@ -6,3 +6,7 @@ columns:
     question:
         label: Question
         span: auto
+    course_name:
+        label: Course
+        relation: course
+        select: name

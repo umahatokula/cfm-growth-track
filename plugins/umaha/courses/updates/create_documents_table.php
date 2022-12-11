@@ -14,7 +14,6 @@ class CreateDocumentsTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
             $table->integer('number_of_pages')->nullable();
-            $table->string('file_path')->nullable();
             $table->timestamps();
         });
     }

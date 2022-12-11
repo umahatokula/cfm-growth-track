@@ -44,3 +44,5 @@
     - Created user answers table
     - create_users_question_answers_table.php
     - create_unlocked_modules_table.php
+    - create_centers_table.php
+    - create_profiles_table.php

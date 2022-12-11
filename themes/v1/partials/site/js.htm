@@ -17,20 +17,23 @@
 <script src="{{ 'assets/js/main.js' | theme }}"></script>
 
 
-<script>
-    $(window).on('ajaxErrorMessage', function(event, message){
-
-        // This can be any custom JavaScript you want
-        alert('Something bad happened, mate, here it is: ' + message);
-
-        // This will stop the default alert() message
-        event.preventDefault();
-
-    })
-</script>
-
 {% placeholder page_js %}
 
 {% framework extras %}
 {% scripts %}
 
+
+
+
+<script>
+    $window.on('ajaxErrorMessage', function(event, message){
+        //   ....
+        event.preventDefault();
+        console.log(event)
+    });
+    $window.on('ajaxError', function(event, context, status,jqXHR ){
+        //   ....
+        event.preventDefault();
+        console.log(event)
+    });
+</script>

@@ -35,7 +35,12 @@ class CourseDetails extends ComponentBase
 
         $slug = $this->property('slug');
 
-        $course = CourseModel::where('slug', $slug)->first();
+        $course = CourseModel::where('slug', $slug)
+        ->with(['playlists.videos' => function ($query) {
+            $query->orderBy('track_number');
+        }])->orderBy('sequence_number')
+        ->first();
+
         $this->page['course'] = $course;
 
         // if this course has no prerequisite, add it as an unlocked course for this user

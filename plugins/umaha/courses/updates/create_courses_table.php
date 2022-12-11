@@ -13,7 +13,9 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('code', 180)->index()->nullable();
-            $table->string('slogan')>nullable();
+            $table->string('slogan')->nullable();
+            $table->string('icon')->nullable();
+            $table->integer('sequence_number')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_published')->default(true);
             $table->double('price', 15,2)->default(0.00);
@@ -24,6 +26,7 @@ class CreateCoursesTable extends Migration
             $table->boolean('open_quiz')->default(1)->nullable();
             $table->foreignId('prerequisite')->default(0)->nullable();
             $table->string('pass_mark')->default(0)->nullable();
+            $table->string('email_template_code')->default(0)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

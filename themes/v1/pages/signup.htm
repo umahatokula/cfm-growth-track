@@ -3,15 +3,44 @@ layout = "default"
 title = "Signup"
 
 [account accountRegister]
+redirect = "dashboard"
 paramCode = "code"
 forceSecure = 0
 requirePassword = 0
 ==
+<?php
+
+
+function onCheckPasswordStrength() {
+    $password_length = 8;
+    $password = post('password');
+	$returnVal = True;
+
+	if ( strlen($password) < $password_length ) {
+		$returnVal = False;
+	}
+
+    return ['passwordWeak' => $returnVal ? 0 : 1];
+
+}
+?>
+==
+<!-- breabcrumb Area Start-->
+<section class="breadcrumb-area" style="background-color: #F9FAFD;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 align-self-center">
+                <h2 class="mt-5">Register</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breabcrumb Area End -->
 <div class="signin-area pd-top-130 pd-bottom-100">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-5">
-                {% component 'accountRegister' %}                
+                {% component 'accountRegister' %}
             </div>
         </div>
     </div>

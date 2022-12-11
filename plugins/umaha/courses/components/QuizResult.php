@@ -52,6 +52,8 @@ class QuizResult extends ComponentBase
 
         $this->page['course'] = $course;
         $this->page['responses'] = $responsesAndCorrectAnswers;
+        $this->page['percentageScore'] = TestQuestion::getPercentageScore($user->id, $course->id);
+        $this->page['nextCourse'] = Course::getNextCourse($course->id);
 
     }
 

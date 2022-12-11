@@ -1,0 +1,21 @@
+uuid: 960ca857-039e-46f5-9d04-d0cc237afe44
+handle: FAQS
+type: entry
+name: FAQs
+drafts: false
+
+primaryNavigation:
+    label: FAQs
+    icon: icon-magic
+    order: 110
+
+fields:
+    question:
+        label: Question
+        type: text
+        span: full
+    answer:
+        label: Answer
+        type: textarea
+        size: small
+        span: full

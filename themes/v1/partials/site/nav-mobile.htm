@@ -1,0 +1,31 @@
+<header class="navbar-area">
+    <nav class="navbar navbar-expand-lg shadow-sm dashboard-menu">
+        <div class="container nav-container">
+            <div class="responsive-mobile-menu">
+                <button class="menu toggle-btn d-block d-lg-none" data-target="#themefie_main_menu"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-left"></span>
+                    <span class="icon-right"></span>
+                </button>
+            </div>
+            <div class="logo">
+                <a class="main-logo" href="{{ 'home' | page }}">
+                    <img class="img-fluid" style="width: 150px" src="{{ this.theme.logo | media  }}" alt="img">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="themefie_main_menu">
+                <ul class="navbar-nav menu-open text-end">
+                    <li class="current-menu-item ">
+                        <a href="{{ 'dashboard' | page }}">Dashboard</a>
+                    </li>
+                    <li class="">
+                        <a href="{{ 'profile' | page }}">My Profile</a>
+                    </li>
+                    <li class="">
+                        <a href="#" data-request="onLogout" data-request-data="redirect: '/'" >Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

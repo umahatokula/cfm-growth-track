@@ -1,0 +1,79 @@
+<form
+    class=""
+    id="form-register"
+    data-request="onSubmit"
+    data-request-validate
+    data-request-files
+>
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+
+    <div class="row mb-3 single-input-wrap">
+        <label for="fname" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">            
+            <input name="fname" value="{{ user.profile ? user.profile.fname : user.name }}" type="text" class="" id="fname">
+            <small>
+                <span class="text-danger" data-validate-for="fname"></span>
+            </small>
+        </div>
+    </div>
+
+    <div class="row mb-3 single-input-wrap">
+        <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-10">
+            <input name="lname" value="{{ user.profile ? user.profile.lname : user.name }}" type="text" class="" id="lname">
+            <small>
+                <span class="text-danger" data-validate-for="lname"></span>
+            </small>
+        </div>
+    </div>
+
+    <div class="row mb-3 single-input-wrap">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input name="email" value="{{ user.email }}" type="email" class="" id="email" readonly>
+            <small>
+                <span class="text-danger" data-validate-for="email"></span>
+            </small>
+        </div>
+    </div>
+
+    <div class="row mb-3 single-input-wrap">
+        <label for="phone" class="col-sm-2 col-form-label">Phone Number</label>
+        <div class="col-sm-10">
+        <input name="phone" value="{{ user.profile ? user.profile.phone : null }}" type="text" class="" id="phone">
+            <small>
+                <span class="text-danger" data-validate-for="phone"></span>
+            </small>
+        </div>
+    </div>
+
+    <div class="row mb-3 single-input-wrap">
+        <label for="center_id" class="col-sm-2 col-form-label">Center</label>
+        <div class="col-sm-10">
+        <select name="center_id" class="" id="center_id">
+            {% for center in centers %}
+                <option value="{{ center.id }}">{{ center.name }}</option>
+            {% endfor %}
+        </select>
+            <small>
+                <span class="text-danger" data-validate-for="center_id"></span>
+            </small>
+        </div>
+    </div>
+
+    <div class="row mb-3 single-input-wrap">
+        <label for="city" class="col-sm-2 col-form-label">City</label>
+        <div class="col-sm-10">
+        <input name="city" value="{{ user.profile ? user.profile.city : null }}" type="text" class="" id="city">
+            <small>
+                <span class="text-danger" data-validate-for="city"></span>
+            </small>
+        </div>
+    </div>
+
+    <div id="partialCountryState">
+        {% partial 'country-state' countryId=user.country_id stateId=user.state_id %}
+    </div>
+
+    <button type="submit" class="btn btn-base w-100">Save Profile</button>
+</form>

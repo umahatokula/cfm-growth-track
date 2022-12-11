@@ -14,8 +14,30 @@ function onStart() {
         redirect('/');
     }
 }
+
+public function onRegister() {
+
+        // register user
+        $this->account->onRegister();
+        dd('sdsdsd');
+
+        return redirect('/dashboard');
+
+
+}
 ?>
 ==
+<!-- breabcrumb Area Start-->
+<section class="breadcrumb-area" style="background-color: #F9FAFD;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 align-self-center mt-5">
+                <h2>Login</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breabcrumb Area End -->
 <div class="signin-area pd-top-130 pd-bottom-100">
     <div class="container">
         <div class="row justify-content-center">

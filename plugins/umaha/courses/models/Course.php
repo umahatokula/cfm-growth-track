@@ -33,7 +33,8 @@ class Course extends Model
     public $rules = [
         'name' => 'required',
         'slug' => 'required',
-        'code' => 'required',
+        // 'code' => 'required',
+        'sequence_number' => 'required',
         // 'groups' => 'required',
         // 'course_image' => 'required',
     ];
@@ -136,4 +137,8 @@ class Course extends Model
         $noOption = [0 => 'No Pre-requisite'];
 		return $noOption + $this->pluck('name', 'id')->toArray();
 	}
+
+    public static function getNextCourse($courseId) {
+        return Course::where('prerequisite', $courseId)->first();
+    }
 }

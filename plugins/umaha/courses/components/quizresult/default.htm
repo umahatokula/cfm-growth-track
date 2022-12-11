@@ -1,52 +1,84 @@
 
-<h3>Result - {{ course.name }}</h3>
+<div class="text-start pt-5">
+    <h3>Result - {{ course.name }}</h3>
 
-<ol>
-
-    {% for question in course.questions %}
-
-    <li>
-
-        <div class="row mb-5">
-            <div class="col-12">
-              <div id="question-{{ question.id }}">
-
-                <p>{{ question.question }}</p>
-
-                {% for answer in question.answers %}
-
-                   {{ alphabet[loop.index0] }}.
-
-                    {% if (responses[question.id]['chosen_option'] == answer['option']) %}
-
-                      {% if (responses[question.id]['is_correct'] == responses[question.id]['chosen_option']) %}
-
-                        <a class="text-success" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
-
-                      {% else %}
-
-                        <a class="text-danger" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
-
-                      {% endif %}
-
-
-                    {% else %}
-
-                      <a class="text-default" href="#" id="{{answer['option']}}">{{ answer['option'] }}</a>
-
-                    {% endif %}
-
-                    <br>
-
-                {% endfor %}
-
-              </div>
-            </div>
+    <div class="row mb-4 bg-light">
+        <div class="col-12 p-4">
+            {% if percentageScore >= (course.pass_mark / 100) %}
+                <h4 class="text-success text-start">Congratulations! You passed!</h4>
+            {% else %}
+                <h4 class="text-danger">Sorry! Try again.</h4>
+            {% endif %}
         </div>
+        <div class="col-6 p-4">
+            {% if percentageScore >= (course.pass_mark / 100) %}
+                <p>Grade received <span class="text-success text-start">{{ percentageScore * 100 }}%</span></p>
+            {% else %}
+                <p>Grade received <span class="text-danger text-start">{{ percentageScore * 100 }}</span></p>
+            {% endif %}
+        </div>
+        <div class="col-6 p-4">
+            <p class="">To pass <b>{{ course.pass_mark }}%</b> or higher</p>
+        </div>
+    </div>
 
-    </li>
 
 
-    {% endfor %}
+    <div class="row mb-4">
+        <div class="col-12 p-3">
+            Next: <a href="{{ 'course' | page({'slug': nextCourse.slug}) }}" class="text-end"><b>{{ nextCourse.name }}</b></a>
+        </div>
+    </div>
 
-</ol>
+{#
+    <ol>
+
+        {% for question in course.questions %}
+
+        <li>
+
+            <div class="row mb-5">
+                <div class="col-12">
+                <div id="question-{{ question.id }}">
+
+                    <p>{{ question.question }}</p>
+
+                    {% for answer in question.answers %}
+
+                    {{ alphabet[loop.index0] }}.
+
+                        {% if (responses[question.id]['chosen_option'] == answer['option']) %}
+
+                        {% if (responses[question.id]['is_correct'] == responses[question.id]['chosen_option']) %}
+
+                            <a class="text-success" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
+
+                        {% else %}
+
+                            <a class="text-danger" href="#" id="{{answer['option']}}"><strong>{{ answer['option'] }}</strong></a>
+
+                        {% endif %}
+
+
+                        {% else %}
+
+                        <a class="text-default" href="#" id="{{answer['option']}}">{{ answer['option'] }}</a>
+
+                        {% endif %}
+
+                        <br>
+
+                    {% endfor %}
+
+                </div>
+                </div>
+            </div>
+
+        </li>
+
+
+        {% endfor %}
+
+    </ol>
+#}
+<div>

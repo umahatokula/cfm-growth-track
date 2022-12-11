@@ -1,0 +1,13 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Name
+        span: auto
+        searchable: true
+    location:
+        label: Location
+        span: auto
+        searchable: true

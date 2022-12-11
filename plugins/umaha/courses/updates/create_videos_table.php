@@ -14,7 +14,7 @@ class CreateVideosTable extends Migration
             $table->string('slug');
             $table->string('source');
             $table->string('youtube_video_id');
-            $table->string('order');
+            $table->string('track_number');
             $table->string('is_published');
             $table->text('description')->nullable();
             $table->string('thumbnail')->nullable();

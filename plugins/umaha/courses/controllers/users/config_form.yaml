@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: User
+
+# Model Form Field configuration
+form: $/umaha/courses/models/user/fields.yaml
+
+# Model Class name
+modelClass: Umaha\Courses\Models\User
+
+# Default redirect location
+defaultRedirect: umaha/courses/users
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: umaha/courses/users/update/:id
+    redirectClose: umaha/courses/users
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: umaha/courses/users
+    redirectClose: umaha/courses/users
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

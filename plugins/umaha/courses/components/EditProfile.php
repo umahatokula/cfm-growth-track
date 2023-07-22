@@ -44,7 +44,7 @@ class EditProfile extends ComponentBase
                 'fname' => post('fname'),
                 'lname' => post('lname'),
                 'phone' => post('phone'),
-                'city' => post('city'),
+                // 'city' => post('city'),
                 'center_id' => post('center_id'),
                 'country_id' => post('country_id'),
                 'state_id' => post('state_id'),

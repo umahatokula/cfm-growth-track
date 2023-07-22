@@ -31,7 +31,7 @@ class Profile extends Model
         'fname'         => 'required',
         'lname'         => 'required',
         'phone'         => 'required',
-        'city'          => 'required',
+        // 'city'          => 'required',
         'country_id'    => 'required',
         'state_id'      => 'required',
     ];
@@ -70,7 +70,7 @@ class Profile extends Model
     public $hasOne = [];
     public $hasMany = [];
     public $belongsTo = [
-        'user' => \Rainlab\Users\Models\User::class,
+        'user' => \RainLab\User\Models\User::class,
         'center' => \Umaha\Courses\Models\Center::class,
     ];
     public $belongsToMany = [];

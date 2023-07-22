@@ -1,3 +1,10 @@
+{% flash %}
+    <div class="alert alert-{{ type }}">
+        {{ message }}
+    </div>
+{% endflash %}
+
+
 <form
     class=""
     id="form-register"
@@ -8,7 +15,7 @@
     <input type="hidden" name="user_id" value="{{ user.id }}">
 
     <div class="row mb-3 single-input-wrap">
-        <label for="fname" class="col-sm-2 col-form-label">First Name</label>
+        <label for="fname" class="col-sm-2 col-form-label">First Name <span class="text-danger">*</span></label>
         <div class="col-sm-10">            
             <input name="fname" value="{{ user.profile ? user.profile.fname : user.name }}" type="text" class="" id="fname">
             <small>
@@ -18,7 +25,7 @@
     </div>
 
     <div class="row mb-3 single-input-wrap">
-        <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
+        <label for="lname" class="col-sm-2 col-form-label">Last Name <span class="text-danger">*</span></label>
         <div class="col-sm-10">
             <input name="lname" value="{{ user.profile ? user.profile.lname : user.name }}" type="text" class="" id="lname">
             <small>
@@ -28,7 +35,7 @@
     </div>
 
     <div class="row mb-3 single-input-wrap">
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <label for="email" class="col-sm-2 col-form-label">Email <span class="text-danger">*</span></label>
         <div class="col-sm-10">
             <input name="email" value="{{ user.email }}" type="email" class="" id="email" readonly>
             <small>
@@ -38,7 +45,7 @@
     </div>
 
     <div class="row mb-3 single-input-wrap">
-        <label for="phone" class="col-sm-2 col-form-label">Phone Number</label>
+        <label for="phone" class="col-sm-2 col-form-label">Phone Number <span class="text-danger">*</span></label>
         <div class="col-sm-10">
         <input name="phone" value="{{ user.profile ? user.profile.phone : null }}" type="text" class="" id="phone">
             <small>
@@ -48,7 +55,7 @@
     </div>
 
     <div class="row mb-3 single-input-wrap">
-        <label for="center_id" class="col-sm-2 col-form-label">Center</label>
+        <label for="center_id" class="col-sm-2 col-form-label">Center <span class="text-danger">*</span></label>
         <div class="col-sm-10">
         <select name="center_id" class="" id="center_id">
             {% for center in centers %}

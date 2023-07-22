@@ -107,9 +107,14 @@ class TestQuestion extends Model
         ])
         ->get();
 
-        return $responses->filter(function($response) {
+        $correctlyAnswered = $responses->filter(function($response) {
             return $response->correctly_answered;
         })->count();
+
+        $totalQuestions = self::getTotalNumberOfQuestionsInCourse($courseId);
+        $correctlyAnswered = $correctlyAnswered > $totalQuestions ? $totalQuestions : $correctlyAnswered;
+
+        return $correctlyAnswered;
 
     }
 
@@ -123,7 +128,13 @@ class TestQuestion extends Model
             $correctlyAnswered = self::getNumberOfCorrectlyAnsweredQuestions($userId, $courseId);
             $totalQuestions = self::getTotalNumberOfQuestionsInCourse($courseId);
 
-            return fdiv($correctlyAnswered, $totalQuestions);
+            if($correctlyAnswered == 0 || $totalQuestions == 0) {
+                return 0;
+            }
+
+            $correctlyAnswered = $correctlyAnswered > $totalQuestions ? $totalQuestions : $correctlyAnswered;
+
+            return fdiv($correctlyAnswered, $totalQuestions) > 1 ? 100 : round(fdiv($correctlyAnswered, $totalQuestions), 2) * 100;
 
         } catch (DivisionByZeroError $e) {
             echo 'Message: ' .$e->getMessage();

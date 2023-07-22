@@ -2,7 +2,7 @@
 {% set stateId = stateId|default(form_value('state_id')) %}
 
 <div class="row mb-3 single-input-wrap">
-    <label for="accountCountry" class="col-sm-2 col-form-label">Country</label>
+    <label for="accountCountry" class="col-sm-2 col-form-label">Country <span class="text-danger">*</span></label>
     <div class="col-sm-10">
         {{ form_select_country('country_id', countryId, {
             id: 'accountCountry',
@@ -17,7 +17,7 @@
 </div>
 
 <div class="row mb-3 single-input-wrap">
-    <label for="accountState" class="col-sm-2 col-form-label">State</label>
+    <label for="accountState" class="col-sm-2 col-form-label">State <span class="text-danger">*</span></label>
     <div class="col-sm-10">
     {{ form_select_state('state_id', countryId, stateId, {
         id: 'accountState',

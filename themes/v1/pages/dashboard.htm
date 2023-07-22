@@ -84,7 +84,7 @@ function onStart() {
                         <tr>
                             <th scope="row">{{ courseName }}</th>
                             <td class="text-center">{{ quiz['correctlyAnswered'] }}/{{ quiz['totalNumberOfQuestions'] }}</td>
-                            <td class="text-center">{{ quiz['percentageScore'] * 100 }}%</td>
+                            <td class="text-center">{{ quiz['percentageScore'] }}%</td>
                             <td class="text-center">{{ quiz['percentageScore'] >= 0.6 ? "<span class='text-success'>Passed</span>" : "<span class='text-danger'>Failed</span>" }}</td>
                         </tr>
                         {% endfor %}

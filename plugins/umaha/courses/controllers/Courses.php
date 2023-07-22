@@ -2,6 +2,7 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use Umaha\Courses\ReportWidgets\ProgressReports as ProgressReportsWidget;
 
 /**
  * Courses Back-end Controller
@@ -21,5 +22,12 @@ class Courses extends Controller
         parent::__construct();
 
         BackendMenu::setContext('umaha.Courses', 'courses', 'courses');
+    }
+
+    public function beforeDisplay()
+    {
+        $progressReports = new ProgressReportsWidget($this);
+        $progressReports->alias = 'progressReportsWidget';
+        $progressReports->bindToController();
     }
 }

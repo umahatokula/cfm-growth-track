@@ -47,7 +47,7 @@ fields:
         span: full
     description:
         label: umaha.courses::lang.plugin.models.course.fields.description
-        type: textarea
+        type: richeditor
         span: full
     course_image:
         label: Course Image

@@ -34,15 +34,15 @@
     - create_user_video_table.php
     - Created playlist_usergroup table
     - create_playlist_usergroup_table.php
-    - Seeded playlists table
-    - seed_playlists_table.php
-    - Seeded categories table
-    - seed_categories_table.php
-    - Seeded videos table
-    - seed_videos_table.php
     - create_test_questions_table.php
     - Created user answers table
     - create_users_question_answers_table.php
     - create_unlocked_modules_table.php
     - create_centers_table.php
     - create_profiles_table.php
+    # - Seeded playlists table
+    # - seed_playlists_table.php
+    # - Seeded categories table
+    # - seed_categories_table.php
+    # - Seeded videos table
+    # - seed_videos_table.php

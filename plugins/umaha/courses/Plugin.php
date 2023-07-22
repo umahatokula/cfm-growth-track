@@ -98,10 +98,6 @@ class Plugin extends PluginBase
             ];
         });
 
-        \Event::listen('umaha.courses.coursePassed', function($passedCourseId, $user) {
-            Event::fire('umaha.courses.courseUnlocked', [$passedCourseId]);
-        });
-
         \Event::listen('umaha.courses.courseUnlocked', function($passedCourseId) {
             $user = Auth::getUser();
 
@@ -118,6 +114,8 @@ class Plugin extends PluginBase
         });
 
         Event::listen('umaha.courses.coursePassed', function ($passedCourseId, $user) {
+
+            Event::fire('umaha.courses.courseUnlocked', [$passedCourseId]);
 
             $course = Course::find($passedCourseId);
             if(!$course->email_template_code) return;
@@ -175,6 +173,7 @@ class Plugin extends PluginBase
             'Umaha\Courses\Components\TestQuestions'  => 'testQuestions',
             'Umaha\Courses\Components\QuizResult'     => 'quizResult',
             'Umaha\Courses\Components\EditProfile'    => 'editProfile',
+            'Umaha\Courses\Components\ProfileEnforcer' => 'profileEnforcer',
         ];
     }
 
@@ -190,6 +189,46 @@ class Plugin extends PluginBase
                 'tab' => 'Courses',
                 'label' => 'Manage courses',
                 'roles' => ['developer']
+            ],
+            'umaha.courses.videos' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Videos',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.playlists' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Playlists',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.audios' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Audios',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.documents' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Documents',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.categories' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Categories',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.quiz' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Quizes',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.centers' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Centers',
+                'roles' => ['developer']
+            ],
+            'umaha.courses.users' => [
+                'tab' => 'Courses',
+                'label' => 'Manage Students',
+                'roles' => ['developer', 'publisher']
             ],
         ];
     }
@@ -265,7 +304,27 @@ class Plugin extends PluginBase
                         'permissions' => ['umaha.courses.*'],
                         'order'       => 500,
                     ],
+                    'users' => [
+                        'label'       => 'Users',
+                        'url'         => Backend::url('umaha/courses/users'),
+                        'icon'        => 'icon-bars',
+                        'permissions' => ['umaha.courses.*'],
+                        'order'       => 500,
+                    ],
                 ]
+            ],
+        ];
+    }
+
+    public function registerReportWidgets()
+    {
+        return [
+            \Umaha\Courses\ReportWidgets\ProgressReports::class => [
+                'label' => 'Growth Track Progress',
+                'context' => 'dashboard',
+                'permissions' => [
+                    'rainlab.googleanalytics.widgets.traffic_overview',
+                ],
             ],
         ];
     }

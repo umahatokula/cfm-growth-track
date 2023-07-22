@@ -4,17 +4,17 @@
 
     <div class="row mb-4 bg-light">
         <div class="col-12 p-4">
-            {% if percentageScore >= (course.pass_mark / 100) %}
+            {% if percentageScore >= (course.pass_mark) %}
                 <h4 class="text-success text-start">Congratulations! You passed!</h4>
             {% else %}
                 <h4 class="text-danger">Sorry! Try again.</h4>
             {% endif %}
         </div>
         <div class="col-6 p-4">
-            {% if percentageScore >= (course.pass_mark / 100) %}
-                <p>Grade received <span class="text-success text-start">{{ percentageScore * 100 }}%</span></p>
+            {% if percentageScore >= (course.pass_mark) %}
+                <p>Grade received <span class="text-success text-start">{{ percentageScore }}%</span></p>
             {% else %}
-                <p>Grade received <span class="text-danger text-start">{{ percentageScore * 100 }}</span></p>
+                <p>Grade received <span class="text-danger text-start">{{ percentageScore }}</span></p>
             {% endif %}
         </div>
         <div class="col-6 p-4">
@@ -25,7 +25,7 @@
 
 
     <div class="row mb-4">
-        <div class="col-12 p-3">
+        <div class="col-12 d-flex align-item-end">
             Next: <a href="{{ 'course' | page({'slug': nextCourse.slug}) }}" class="text-end"><b>{{ nextCourse.name }}</b></a>
         </div>
     </div>

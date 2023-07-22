@@ -1,7 +1,16 @@
 [session]
 security = "all"
+
+[profileEnforcer]
+fname = 10
+lname = 10
+email = 10
+phone = 10
+country = 10
+state = 10
+center = 0
 ==
-{% component 'session' %}
+{% component 'session' %}{% component 'profileEnforcer' %}
 <!DOCTYPE html>
 <html lang="zxx">
 

@@ -88,6 +88,7 @@ class TestQuestions extends ComponentBase
 
     public function onSelectOption() {
 
+      dd(post('questionId'));
       $correctAnswer = TestQuestion::getCorrectAnswer(post('questionId'));
       $question = TestQuestion::find(post('questionId'));
       $correctly_answered = null;
@@ -124,7 +125,7 @@ class TestQuestions extends ComponentBase
 
         $percentageScore = TestQuestion::getPercentageScore($user->id, $course->id);
 
-        if(($percentageScore * 100) >= $course->pass_mark) {
+        if(($percentageScore) >= $course->pass_mark) {
             Event::fire('umaha.courses.coursePassed', [$course->id, $user]);
         }
 

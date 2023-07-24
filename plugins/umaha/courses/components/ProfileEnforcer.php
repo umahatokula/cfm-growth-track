@@ -64,7 +64,7 @@ class ProfileEnforcer extends ComponentBase
         $user = Auth::getUser();
         $profile = Profile::where('user_id', $user->id)->first();
 
-        // redirect only when current page is not edit-profile. This prevent an infinite loop
+        // redirect only when current page is not edit-profile. This prevents an infinite loop
         $fullPageUrl = $this->currentPageUrl();
         $splitted = explode('/', $fullPageUrl);
         $currentnUrl = end($splitted);

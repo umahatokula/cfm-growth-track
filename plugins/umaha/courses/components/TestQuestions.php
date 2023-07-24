@@ -30,7 +30,13 @@ class TestQuestions extends ComponentBase
         $this->page['alphabet'] = $this->getAlphabets();
 
         $slug = $this->param('slug');
+
         $course = Course::where('slug', $slug)->with('questions')->first();
+        if(!$course) {
+          $contents = 'Page not found';
+          $statusCode = 404;
+          return \Response::make($contents, $statusCode);
+        }
 
         $user = Auth::getUser();
         $responses = UsersQuestionAnswer::where(['user_id' => $user->id])
@@ -88,7 +94,6 @@ class TestQuestions extends ComponentBase
 
     public function onSelectOption() {
 
-      dd(post('questionId'));
       $correctAnswer = TestQuestion::getCorrectAnswer(post('questionId'));
       $question = TestQuestion::find(post('questionId'));
       $correctly_answered = null;
@@ -123,12 +128,11 @@ class TestQuestions extends ComponentBase
         $user = Auth::getUser();
         $course = Course::where('slug', $this->param('slug'))->first();
 
-        $percentageScore = TestQuestion::getPercentageScore($user->id, $course->id);
+        $coursePassed = Course::coursePassed($course->id);
 
-        if(($percentageScore) >= $course->pass_mark) {
+        if($coursePassed) {
             Event::fire('umaha.courses.coursePassed', [$course->id, $user]);
         }
-
 
         return redirect('/quiz-result/'.$this->param('slug'));
     }

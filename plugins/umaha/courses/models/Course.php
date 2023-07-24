@@ -141,4 +141,18 @@ class Course extends Model
     public static function getNextCourse($courseId) {
         return Course::where('prerequisite', $courseId)->first();
     }
+
+    public static function coursePassed($searchParam) : bool {
+        $user = Auth::getUser();
+        if(!$user) {
+            return false;
+        }
+
+        $course = self::where('id', $searchParam)->orWhere('slug', $searchParam)->first();
+
+        $percentageScore = TestQuestion::getPercentageScore($user->id, $course->id);
+
+        return $percentageScore >= $course->pass_mark;
+
+    }
 }

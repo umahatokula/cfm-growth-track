@@ -3,15 +3,27 @@ layout = "default"
 title = "Quiz"
 
 [testQuestions]
+[profileEnforcer]
 ==
+use \Umaha\Courses\Models\Course;
 
 function onStart() {
 
     $user = Auth::getUser();
 
     if(!$user) return redirect('/login');
+    
+    $slug = $this->param('slug');
+
+    $course = Course::where('slug', $slug)->first();
+
+    $this['preRequisiteCoursePassed'] = true;
+    if($course->prerequisite != 0) {
+        $this['preRequisiteCoursePassed'] = Course::coursePassed($course->prerequisite);
+    }
 }
 ==
+{% if preRequisiteCoursePassed %}
 <section class="banner-area">
     <div class="container">
         <div class="row">
@@ -25,3 +37,18 @@ function onStart() {
         </div>
     </div>
 </section>
+{% else %}
+<section class="banner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 align-self-center">
+                <div class="banner-inner text-md-start text-center">
+
+                    <p class="pt-5">You have not passsed the pre-requisite for this course</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

@@ -6,11 +6,34 @@ title = "Course"
 slug = "{{ :slug }}"
 
 [session]
+[profileEnforcer]
+
 security = "user"
 redirect = "login"
 ==
+use \Umaha\Courses\Models\Course;
+
+function onStart() {
+    
+    $slug = $this->param('slug');
+    
+    $course = Course::where('slug', $slug)->first();
+    if(!$course) {
+        $contents = 'Page not found';
+        $statusCode = 404;
+        return \Response::make($contents, $statusCode);
+    }
+
+    $this['preRequisiteCoursePassed'] = true;
+    if($course->prerequisite != 0) {
+        $this['preRequisiteCoursePassed'] = Course::coursePassed($course->prerequisite);
+    }
+}
+
+
+==
 <!-- courses-details Area Start-->
-{% if course.unlocked %}
+{% if course.unlocked and preRequisiteCoursePassed %}
 <section class="courses-details-area pd-top-135 pd-bottom-130">
     <div class="container">
         <div class="row mb-5">
